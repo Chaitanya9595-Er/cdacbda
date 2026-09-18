@@ -13,6 +13,12 @@ echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
 
 
 
+FROM nginx
+
+COPY index.html /usr/share/nginx/html/index.html
+docker build -t cdac-nginx .
+docker run -d -p 8080:80 --name cdac-web cdac-nginx
+
 
 Creating Lambda Function
 
